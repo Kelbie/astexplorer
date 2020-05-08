@@ -1,0 +1,16 @@
+{
+  "name": "rome",
+  "version": "0.0.2",
+  "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "LICENSE"
+  ],
+  "bin": {
+    "rome": "bin/rome/index.js"
+  },
+  "scripts": {
+    "postinstall": "echo \"Thanks for using Rome! This space reserved for future sustainability announcements. See https://github.com/facebookexperimental/rome/pull/198 for context.\""
+  },
+  "private": false
+}
