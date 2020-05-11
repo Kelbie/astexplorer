@@ -10,7 +10,8 @@ export default {
   displayName: ID,
   version: "0",
   homepage: "https://github.com/facebookexperimental/rome/",
-  locationProps: new Set(['loc', 'start', 'end', 'range']),
+  locationProps: new Set(['loc', 'start', 'end']),
+  typeProps: new Set(['type']),
   showInMenu: true,
 
   loadParser(callback) {
@@ -26,6 +27,17 @@ export default {
     };
 
     const ast = parser.parseJS2(opts);
+    
     return ast
+  },
+
+  getNodeName(node) {
+    return node.type;
+  },
+
+  nodeToRange(node) {
+    if (node.loc) {
+      return [node.loc.start.index, node.loc.end.index];
+    }
   }
 };
