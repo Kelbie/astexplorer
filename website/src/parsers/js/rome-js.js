@@ -18,7 +18,7 @@ export default {
     require(['./rome.js'], callback);
   },
 
-  parse(parser, code) {
+  parse({parse}, code) {
     const opts = {
       path: '',
       input: code,
@@ -26,7 +26,7 @@ export default {
       syntax: ['js', 'jsx']
     };
 
-    const ast = parser.parseJS2(opts);
+    const ast = parse(opts);
     
     return ast
   },
