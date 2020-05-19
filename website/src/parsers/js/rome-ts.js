@@ -23,7 +23,7 @@ export default {
       path: '',
       input: code,
       sourceType: 'module',
-      syntax: ['js', 'jsx']
+      syntax: ['ts', 'tsx']
     };
 
     const ast = parser.parseJS2(opts);
