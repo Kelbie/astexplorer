@@ -1,7 +1,7 @@
 import defaultParserInterface from './utils/defaultESTreeParserInterface';
 import pkg from 'babel-eslint/package.json';
 
-const ID = 'rome-js';
+const ID = 'rome-ts';
 
 export default {
   ...defaultParserInterface,
@@ -10,8 +10,7 @@ export default {
   displayName: ID,
   version: "0",
   homepage: "https://github.com/facebookexperimental/rome/",
-  locationProps: new Set(['loc', 'start', 'end']),
-  typeProps: new Set(['type']),
+  locationProps: new Set(['loc', 'start', 'end', 'range']),
   showInMenu: true,
 
   loadParser(callback) {
@@ -23,21 +22,10 @@ export default {
       path: '',
       input: code,
       sourceType: 'module',
-      syntax: ['js', 'jsx']
+      syntax: ['ts']
     };
 
     const ast = parser.parseJS2(opts);
-    
     return ast
-  },
-
-  getNodeName(node) {
-    return node.type;
-  },
-
-  nodeToRange(node) {
-    if (node.loc) {
-      return [node.loc.start.index, node.loc.end.index];
-    }
   }
 };
