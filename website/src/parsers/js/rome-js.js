@@ -8,7 +8,7 @@ export default {
 
   id: ID,
   displayName: ID,
-  version: "0",
+  version: "0.0.25",
   homepage: "https://github.com/facebookexperimental/rome/",
   locationProps: new Set(['loc', 'start', 'end']),
   typeProps: new Set(['type']),
@@ -25,10 +25,8 @@ export default {
       sourceType: 'module',
       syntax: ['js', 'jsx']
     };
-
-    const ast = parser.parseJS2(opts);
     
-    return ast
+    return parser.parse(opts);
   },
 
   getNodeName(node) {
@@ -39,5 +37,11 @@ export default {
     if (node.loc) {
       return [node.loc.start.index, node.loc.end.index];
     }
+  },
+
+  getDefaultOptions() {
+    return {
+      jsx: true,
+    };
   }
 };
